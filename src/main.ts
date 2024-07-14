@@ -9,7 +9,9 @@ async function bootstrap() {
     .setTitle('API Documentation')
     .setDescription('How to use a notification API')
     .setVersion('1.0')
+    .addTag('auth')
     .addTag('notifications')
+    .addBearerAuth()
     .build()
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('apidoc', app, document)
