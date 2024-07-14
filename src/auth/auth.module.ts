@@ -7,9 +7,6 @@ import { UserSchema } from 'src/users/schemas/user.schema';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './guard/jwt.strategy';
-import { ConfigService } from '@nestjs/config';
-
-const configService = new ConfigService()
 
 @Module({
   imports: [
@@ -18,7 +15,7 @@ const configService = new ConfigService()
       schema: UserSchema
     }]),
     JwtModule.register({
-      secret: configService.get('SECRET_TOKEN'),
+      secret: process.env.SECRET_TOKEN,
     }),
     PassportModule
   ],
