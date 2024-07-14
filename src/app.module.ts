@@ -9,8 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRoot(process.env.DB_URI, { dbName: process.env.DB_NAME }), 
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.DB_URI, { user: process.env.DB_USER, pass: process.env.DB_PASS, dbName: process.env.DB_NAME }),
     NotificationsModule, 
     AuthModule, 
     UsersModule],
