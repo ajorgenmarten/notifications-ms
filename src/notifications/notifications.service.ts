@@ -77,6 +77,23 @@ export class NotificationsService {
     console.log(`${userId}: ${content}`)
   }
 
+  countNotificationsByLot(notification: NotificationDocument) {
+    const filterQuery = {
+      eventName: notification.eventName,
+      sendBy: notification.sendBy,
+      email: undefined,
+      userId: undefined
+    }
+    if (notification.sendBy == "email") {
+      filterQuery.email = notification.email
+    }
+    else {
+      filterQuery.userId = notification.userId
+    }
+
+    return this.notificationModel.find(filterQuery)
+  }
+
   async getLotNotifications() {
     const notifications = this.notificationModel
       .aggregate([

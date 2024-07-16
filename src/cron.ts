@@ -7,7 +7,7 @@ export class CronService {
 
     constructor(private readonly notificationsService: NotificationsService) { }
 
-    @Cron(process.env.MAX_AMMOUNT_ELEMENTS)
+    @Cron(process.env.MAX_WAIT_TIME)
     async handleCron() {
         console.log('send notifications')
         const a = await this.notificationsService.getLotNotifications() //("6693370ecfdc8b87691680af")
