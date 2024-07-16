@@ -5,11 +5,6 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('/names')
-  names(): string[] {
-    return ['alberto', 'alejandro', 'pedro']
-  }
-
   @Get()
   getHello(): string {
     return this.appService.getHello();

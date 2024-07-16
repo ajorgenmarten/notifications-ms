@@ -9,11 +9,6 @@ export class CreateNotificationDto {
     eventName: string
 
     @ApiProperty()
-    @IsNotEmpty({ message: 'type is required' })
-    @IsIn(["snapshot", "lot"])
-    type: "snapshot" | "lot"
-
-    @ApiProperty()
     @IsNotEmpty({ message: 'sendBy is required' })
     @IsString()
     @Length(3,50, { message: 'sendBy must be 3 to 50 characters' })
